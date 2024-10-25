@@ -1,0 +1,23 @@
+services:
+  backend:
+    build:
+      context: ./backend  
+      dockerfile: Dockerfile 
+    ports:
+      - "80:80"
+    networks:
+      - mynetwork
+
+  mysql:
+    image: mysql:5.7 
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: RootPassword
+      MYSQL_DATABASE: Company
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
