@@ -5,8 +5,8 @@ services:
       dockerfile: Dockerfile 
     ports:
       - "80:80"
-    networks:
-      - mynetwork
+    #networks:
+     # - mynetwork
 
   mysql:
     image: mysql:5.7 
@@ -15,9 +15,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: RootPassword
       MYSQL_DATABASE: Company
-    networks:
-      - mynetwork
+    #networks:
+      #- mynetwork
 
-networks:
-  mynetwork:
-    driver: bridge
+#networks:
+  #mynetwork:
+    #driver: bridge
