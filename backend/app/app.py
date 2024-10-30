@@ -30,15 +30,19 @@ def hello_daniel():
 
 @app.route('/users')
 def get_users():
-    connection = get_db_connection()
-    cursor = connection.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM users")  
-    users = cursor.fetchall()
-    cursor.close()
-    connection.close()
-    return jsonify(users)
+    try:
+        connection = get_db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM users")  
+        users = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        return jsonify(users)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500  
+
 
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=80)
