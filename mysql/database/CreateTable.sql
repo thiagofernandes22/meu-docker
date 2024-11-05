@@ -1,7 +1,6 @@
-CREATE TABLE employees (
-    id INT AUTO_INCREMENT PRIMARY KEY, 
-    first_name VARCHAR(25),
-    last_name  VARCHAR(25),
-    department VARCHAR(15),
-    email  VARCHAR(50)
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

@@ -5,19 +5,18 @@ services:
       dockerfile: Dockerfile 
     ports:
       - "80:80"
-    networks:
-      - mynetwork
+    env_file:
+      - .env
 
   mysql:
     image: mysql:5.7 
     ports:
       - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: RootPassword
-      MYSQL_DATABASE: Company
-    networks:
-      - mynetwork
+    env_file:
+      - .env
+    volumes:
+      - mysql_data:/var/lib/mysql 
 
-networks:
-  mynetwork:
-    driver: bridge
+
+volumes:
+  mysql_data: 
